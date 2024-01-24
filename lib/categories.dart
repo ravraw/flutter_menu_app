@@ -11,13 +11,31 @@ class CategoriesScreen extends StatelessWidget {
       ),
       body: Center(
         child: GridView(
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 3,
-              childAspectRatio: 3 / 2,
-              mainAxisSpacing: 20,
-              crossAxisSpacing: 20,
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            childAspectRatio: 3 / 2,
+            mainAxisSpacing: 10,
+            crossAxisSpacing: 10,
+          ),
+          children: const [
+            Text(
+              "item 1",
+              style: TextStyle(backgroundColor: Colors.white),
             ),
-            children: const [Text("item 1"), Text("item 2"), Text("item 3")]),
+            Text(
+              "item 1",
+              style: TextStyle(backgroundColor: Colors.white),
+            ),
+            Text(
+              "item 1",
+              style: TextStyle(backgroundColor: Colors.white),
+            ),
+            Text(
+              "item 1",
+              style: TextStyle(backgroundColor: Colors.white),
+            ),
+          ],
+        ),
       ),
     );
   }
