@@ -1,10 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_menu_app/models/meal.dart';
 
 class MealsScreen extends StatelessWidget {
-  const MealsScreen({super.key});
+  const MealsScreen(this.title, this.meals, {super.key});
+
+  final String title;
+  final List<Meal> meals;
 
   @override
   Widget build(BuildContext context) {
-    return const Text("Meals Screen");
+    Widget content = meals.isEmpty
+        ? const Text('No meals found. Try another category!')
+        : ListView.builder(
+            itemBuilder: (ctx, index) => Text(meals[index].title),
+            itemCount: meals.length,
+          );
+
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          title,
+        ),
+      ),
+      body: Center(
+        child: content,
+      ),
+    );
   }
 }
