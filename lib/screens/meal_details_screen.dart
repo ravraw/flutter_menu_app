@@ -30,14 +30,24 @@ class MealDetails extends StatelessWidget {
                   .copyWith(color: Theme.of(context).colorScheme.onBackground),
             ),
             const SizedBox(height: 10),
-            ...meal.ingredients.map((ingredient) => Text(ingredient)).toList(),
+            ...meal.ingredients
+                .map((ingredient) => Text(
+                      ingredient,
+                      style: TextStyle(
+                          color: Theme.of(context).colorScheme.onBackground),
+                    ))
+                .toList(),
             const SizedBox(height: 20),
             ...meal.steps.asMap().entries.map((step) {
               return ListTile(
                 leading: CircleAvatar(
                   child: Text('${step.key + 1}'),
                 ),
-                title: Text(step.value),
+                title: Text(
+                  step.value,
+                  style: TextStyle(
+                      color: Theme.of(context).colorScheme.onBackground),
+                ),
               );
             }).toList(),
           ],
