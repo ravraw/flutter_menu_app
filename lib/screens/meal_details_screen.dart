@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_menu_app/models/meal.dart';
+import 'package:flutter_menu_app/widgets/ingredients_list.dart';
+import 'package:flutter_menu_app/widgets/steps_list.dart';
 
 class MealDetails extends StatelessWidget {
   const MealDetails({required this.meal, super.key});
@@ -29,27 +31,10 @@ class MealDetails extends StatelessWidget {
                   .titleLarge!
                   .copyWith(color: Theme.of(context).colorScheme.onBackground),
             ),
-            const SizedBox(height: 10),
-            ...meal.ingredients
-                .map((ingredient) => Text(
-                      ingredient,
-                      style: TextStyle(
-                          color: Theme.of(context).colorScheme.onBackground),
-                    ))
-                .toList(),
             const SizedBox(height: 20),
-            ...meal.steps.asMap().entries.map((step) {
-              return ListTile(
-                leading: CircleAvatar(
-                  child: Text('${step.key + 1}'),
-                ),
-                title: Text(
-                  step.value,
-                  style: TextStyle(
-                      color: Theme.of(context).colorScheme.onBackground),
-                ),
-              );
-            }).toList(),
+            IngredientList(ingredients: meal.ingredients),
+            const SizedBox(height: 20),
+            StepsList(steps: meal.steps),
           ],
         ),
       ),
