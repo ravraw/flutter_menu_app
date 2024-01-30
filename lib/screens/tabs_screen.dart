@@ -20,12 +20,20 @@ class _TabsScreenState extends State<TabsScreen> {
     });
   }
 
+  void _showInfoMessage(String message) {
+    ScaffoldMessenger.of(context).clearSnackBars();
+    ScaffoldMessenger.of(context)
+        .showSnackBar(SnackBar(content: Text(message)));
+  }
+
   void _toggleFavorite(Meal meal) {
     setState(() {
       if (favorites.contains(meal)) {
         favorites.remove(meal);
+        _showInfoMessage("Removed ${meal.title} from favorites");
       } else {
         favorites.add(meal);
+        _showInfoMessage("Added ${meal.title} to favorites.");
       }
     });
   }
