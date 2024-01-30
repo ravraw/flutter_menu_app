@@ -4,16 +4,21 @@ import 'package:flutter_menu_app/widgets/ingredients_list.dart';
 import 'package:flutter_menu_app/widgets/steps_list.dart';
 
 class MealDetails extends StatelessWidget {
-  const MealDetails({required this.meal, super.key});
+  const MealDetails(
+      {required this.meal, required this.onFavoritePressed, super.key});
 
   final Meal meal;
+  final void Function(Meal meal) onFavoritePressed;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Meal Details'),
-      ),
+      appBar: AppBar(title: const Text('Meal Details'), actions: [
+        IconButton(
+          onPressed: () => onFavoritePressed(meal),
+          icon: const Icon(Icons.favorite_border),
+        ),
+      ]),
       body: SingleChildScrollView(
         child: Column(
           children: [
