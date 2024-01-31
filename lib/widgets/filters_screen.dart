@@ -4,29 +4,72 @@ class FiltersScreen extends StatefulWidget {
   const FiltersScreen({super.key});
 
   @override
-  State<FilterScreen> createState() {
-    return State<FiltersScreen>();
+  State<FiltersScreen> createState() {
+    return _FiltersScreenState();
   }
 }
 
-class_FiltersScreenState extends State<FiltersScreen> {
-
+class _FiltersScreenState extends State<FiltersScreen> {
   bool _glutenFree = false;
   bool _lactoseFree = false;
   bool _vegetarian = false;
   bool _vegan = false;
-@override
-Widget build(BuildContext context) {
-return Scaffold(
-  appBar: AppBar(
-    title: const Text('Filters'),
-  ),
-  body: const Column(children: [
-    SwitchListTile(value: true, onChanged:(){}, title:  Text('Gluten-free'),subtitle: Text('Only includes gluten-free meals',)),
-    SwitchListTile(value: false, onChanged:(){}, title:  Text('Lactose-free'),subtitle: Text('Only includes lactose-free meals',)),
-    SwitchListTile(value: false, onChanged:(){}, title:  Text('_vegetarian'),subtitle: Text('Only includes lactose-free meals',)),
-    SwitchListTile(value: false, onChanged:(){}, title:  Text('_vegan'),subtitle: Text('Only includes lactose-free meals',)),
-  ],)
-);
- }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: const Text('Filters'),
+        ),
+        body: Column(
+          children: [
+            SwitchListTile(
+              value: _glutenFree,
+              onChanged: (isChecked) {
+                setState(() {
+                  _glutenFree = isChecked;
+                });
+              },
+              title: const Text('Gluten-free'),
+              subtitle: const Text('Only includes gluten-free meals'),
+            ),
+            SwitchListTile(
+              value: _lactoseFree,
+              onChanged: (isChecked) {
+                setState(() {
+                  _lactoseFree = isChecked;
+                });
+              },
+              title: const Text('Lactose-free'),
+              subtitle: const Text(
+                'Only includes lactose-free meals',
+              ),
+            ),
+            SwitchListTile(
+              value: _vegetarian,
+              onChanged: (isChecked) {
+                setState(() {
+                  _vegetarian = isChecked;
+                });
+              },
+              title: const Text('_vegetarian'),
+              subtitle: const Text(
+                'Only includes lactose-free meals',
+              ),
+            ),
+            SwitchListTile(
+              value: _vegan,
+              onChanged: (isChecked) {
+                setState(() {
+                  _vegan = isChecked;
+                });
+              },
+              title: const Text('_vegan'),
+              subtitle: const Text(
+                'Only includes lactose-free meals',
+              ),
+            ),
+          ],
+        ));
+  }
 }
