@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_menu_app/widgets/main_drawer.dart';
 
 class FiltersScreen extends StatefulWidget {
   const FiltersScreen({super.key});
@@ -21,6 +22,18 @@ class _FiltersScreenState extends State<FiltersScreen> {
         appBar: AppBar(
           title: const Text('Filters'),
         ),
+        drawer: MainDrawer(onSelectScreen: (identifier) {
+          Navigator.of(context).pop();
+          if (identifier == "Categories") {
+            Navigator.of(context).pushReplacementNamed('/');
+          } else if (identifier == "Favorites") {
+            Navigator.of(context).pushReplacementNamed('/favorites');
+          } else if (identifier == "Filters") {
+            Navigator.of(context).pop();
+          } else {
+            Navigator.of(context).pushReplacementNamed('/');
+          }
+        }),
         body: Column(
           children: [
             SwitchListTile(
@@ -52,7 +65,7 @@ class _FiltersScreenState extends State<FiltersScreen> {
                   _vegetarian = isChecked;
                 });
               },
-              title: const Text('_vegetarian'),
+              title: const Text('Vegetarian'),
               subtitle: const Text(
                 'Only includes lactose-free meals',
               ),
@@ -64,7 +77,7 @@ class _FiltersScreenState extends State<FiltersScreen> {
                   _vegan = isChecked;
                 });
               },
-              title: const Text('_vegan'),
+              title: const Text('Vegan'),
               subtitle: const Text(
                 'Only includes lactose-free meals',
               ),

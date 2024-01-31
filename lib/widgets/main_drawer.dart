@@ -1,22 +1,9 @@
 import 'package:flutter/material.dart';
 
 class MainDrawer extends StatelessWidget {
-  const MainDrawer({Key? key}) : super(key: key);
+  const MainDrawer({super.key, required this.onSelectScreen});
 
-  // Widget _buildListTile(String title, IconData icon, Function() onTap) {
-  //   return ListTile(
-  //     leading: Icon(icon, size: 26),
-  //     title: Text(
-  //       title,
-  //       style: const TextStyle(
-  //         fontFamily: 'RobotoCondensed',
-  //         fontSize: 24,
-  //         fontWeight: FontWeight.bold,
-  //       ),
-  //     ),
-  //     onTap: onTap,
-  //   );
-  // }
+  final void Function(String identifier) onSelectScreen;
 
   @override
   Widget build(BuildContext context) {
@@ -36,16 +23,17 @@ class MainDrawer extends StatelessWidget {
           ListTile(
             leading: const Icon(Icons.category),
             title: const Text('Categories'),
-            onTap: () {
-              Navigator.of(context).pushReplacementNamed('/');
-            },
+            onTap: () => onSelectScreen('Categories'),
           ),
           ListTile(
             leading: const Icon(Icons.star),
             title: const Text('Favorites'),
-            onTap: () {
-              Navigator.of(context).pushReplacementNamed('/favorites');
-            },
+            onTap: () => onSelectScreen('Favorites'),
+          ),
+          ListTile(
+            leading: const Icon(Icons.filter_alt_outlined),
+            title: const Text('Filters'),
+            onTap: () => onSelectScreen('Filters'),
           ),
         ],
       ),
