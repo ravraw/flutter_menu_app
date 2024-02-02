@@ -1,6 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_menu_app/widgets/main_drawer.dart';
 
+enum Filter {
+  glutenFree,
+  lactoseFree,
+  vegetarian,
+  vegan,
+}
+
 class FiltersScreen extends StatefulWidget {
   const FiltersScreen({super.key});
 
@@ -39,10 +46,10 @@ class _FiltersScreenState extends State<FiltersScreen> {
           onPopInvoked: (bool didPop) {
             if (didPop) return;
             Navigator.of(context).pop({
-              Filter.glutenFree: _glutenFreeFilterSet,
-              Filter.lactoseFree: _lactoseFreeFilterSet,
-              Filter.vegetarian: _vegetarianFilterSet,
-              Filter.vegan: _veganFilterSet,
+              Filter.glutenFree: _glutenFree,
+              Filter.lactoseFree: _lactoseFree,
+              Filter.vegetarian: _vegetarian,
+              Filter.vegan: _vegan,
             });
           },
           child: Column(
