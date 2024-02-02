@@ -34,55 +34,67 @@ class _FiltersScreenState extends State<FiltersScreen> {
             Navigator.of(context).pushReplacementNamed('/');
           }
         }),
-        body: Column(
-          children: [
-            SwitchListTile(
-              value: _glutenFree,
-              onChanged: (isChecked) {
-                setState(() {
-                  _glutenFree = isChecked;
-                });
-              },
-              title: const Text('Gluten-free'),
-              subtitle: const Text('Only includes gluten-free meals'),
-            ),
-            SwitchListTile(
-              value: _lactoseFree,
-              onChanged: (isChecked) {
-                setState(() {
-                  _lactoseFree = isChecked;
-                });
-              },
-              title: const Text('Lactose-free'),
-              subtitle: const Text(
-                'Only includes lactose-free meals',
+        body: PopScope(
+          canPop: false,
+          onPopInvoked: (bool didPop) {
+            if (didPop) return;
+            Navigator.of(context).pop({
+              Filter.glutenFree: _glutenFreeFilterSet,
+              Filter.lactoseFree: _lactoseFreeFilterSet,
+              Filter.vegetarian: _vegetarianFilterSet,
+              Filter.vegan: _veganFilterSet,
+            });
+          },
+          child: Column(
+            children: [
+              SwitchListTile(
+                value: _glutenFree,
+                onChanged: (isChecked) {
+                  setState(() {
+                    _glutenFree = isChecked;
+                  });
+                },
+                title: const Text('Gluten-free'),
+                subtitle: const Text('Only includes gluten-free meals'),
               ),
-            ),
-            SwitchListTile(
-              value: _vegetarian,
-              onChanged: (isChecked) {
-                setState(() {
-                  _vegetarian = isChecked;
-                });
-              },
-              title: const Text('Vegetarian'),
-              subtitle: const Text(
-                'Only includes lactose-free meals',
+              SwitchListTile(
+                value: _lactoseFree,
+                onChanged: (isChecked) {
+                  setState(() {
+                    _lactoseFree = isChecked;
+                  });
+                },
+                title: const Text('Lactose-free'),
+                subtitle: const Text(
+                  'Only includes lactose-free meals',
+                ),
               ),
-            ),
-            SwitchListTile(
-              value: _vegan,
-              onChanged: (isChecked) {
-                setState(() {
-                  _vegan = isChecked;
-                });
-              },
-              title: const Text('Vegan'),
-              subtitle: const Text(
-                'Only includes lactose-free meals',
+              SwitchListTile(
+                value: _vegetarian,
+                onChanged: (isChecked) {
+                  setState(() {
+                    _vegetarian = isChecked;
+                  });
+                },
+                title: const Text('Vegetarian'),
+                subtitle: const Text(
+                  'Only includes lactose-free meals',
+                ),
               ),
-            ),
-          ],
+              SwitchListTile(
+                value: _vegan,
+                onChanged: (isChecked) {
+                  setState(() {
+                    _vegan = isChecked;
+                  });
+                },
+                title: const Text('Vegan'),
+                subtitle: const Text(
+                  'Only includes lactose-free meals',
+                ),
+              ),
+            ],
+          ),
         ));
   }
 }
