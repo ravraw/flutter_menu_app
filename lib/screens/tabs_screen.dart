@@ -61,7 +61,7 @@ class _TabsScreenState extends State<TabsScreen> {
         filters = result ?? kInitialFilters;
       });
     } else if (identifier == "Favorites") {
-      Navigator.of(context).pop();
+      // Navigator.of(context).pop();
       setState(() {
         _selectedPageIndex = 1;
       });
@@ -90,6 +90,7 @@ class _TabsScreenState extends State<TabsScreen> {
 
     Widget activePage = CategoriesScreen(
       toggleFavorite: _toggleFavorite,
+      filteredMeals: filteredMeals,
     );
     var activePageTitle = "Categories";
 
