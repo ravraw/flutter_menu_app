@@ -4,11 +4,13 @@ import "package:flutter_riverpod/flutter_riverpod.dart";
 class FavoritesNotifier extends StateNotifier<List<Meal>> {
   FavoritesNotifier() : super([]);
 
-  void toggleFavorite(Meal meal) {
+  bool toggleFavorite(Meal meal) {
     if (state.contains(meal)) {
       state = state.where((element) => element.id != meal.id).toList();
+      return false;
     } else {
       state = [...state, meal];
+      return true;
     }
   }
 }

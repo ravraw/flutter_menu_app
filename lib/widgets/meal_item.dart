@@ -5,11 +5,9 @@ import 'package:flutter_menu_app/widgets/meal_trait.dart';
 import 'package:transparent_image/transparent_image.dart';
 
 class MealItem extends StatelessWidget {
-  const MealItem(
-      {required this.meal, required this.onFavoritePressed, super.key});
+  const MealItem({required this.meal, super.key});
 
   final Meal meal;
-  final void Function(Meal meal) onFavoritePressed;
 
   String _capitalizeText(String text) {
     return text.characters.first.toUpperCase() +
@@ -21,7 +19,6 @@ class MealItem extends StatelessWidget {
       MaterialPageRoute(
         builder: (ctx) => MealDetails(
           meal: meal,
-          onFavoritePressed: onFavoritePressed,
         ),
       ),
     );
