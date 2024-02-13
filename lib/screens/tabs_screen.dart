@@ -8,6 +8,8 @@ import 'package:flutter_menu_app/screens/filters_screen.dart';
 import 'package:flutter_menu_app/widgets/main_drawer.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../providers/filters_provider.dart';
+
 const kInitialFilters = {
   Filter.glutenFree: false,
   Filter.lactoseFree: false,
