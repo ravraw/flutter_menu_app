@@ -3,7 +3,7 @@ import 'package:flutter_menu_app/data/dummy_data.dart';
 import 'package:flutter_menu_app/models/meal.dart';
 import 'package:flutter_menu_app/screens/categories_screen.dart';
 import 'package:flutter_menu_app/screens/meals_screen.dart';
-import 'package:flutter_menu_app/widgets/filters_screen.dart';
+import 'package:flutter_menu_app/screens/filters_screen.dart';
 import 'package:flutter_menu_app/widgets/main_drawer.dart';
 
 const kInitialFilters = {
