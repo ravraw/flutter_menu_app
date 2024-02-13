@@ -24,7 +24,6 @@ class TabsScreen extends ConsumerStatefulWidget {
 
 class _TabsScreenState extends ConsumerState<TabsScreen> {
   int _selectedPageIndex = 0;
-  // final List<Meal> _favorites = [];
   Map<Filter, bool> _currentFilters = kInitialFilters;
 
   void _selectpage(int index) {
@@ -32,24 +31,6 @@ class _TabsScreenState extends ConsumerState<TabsScreen> {
       _selectedPageIndex = index;
     });
   }
-
-  void _showInfoMessage(String message) {
-    ScaffoldMessenger.of(context).clearSnackBars();
-    ScaffoldMessenger.of(context)
-        .showSnackBar(SnackBar(content: Text(message)));
-  }
-
-  // void _toggleFavorite(Meal meal) {
-  //   setState(() {
-  //     if (_favorites.contains(meal)) {
-  //       _favorites.remove(meal);
-  //       _showInfoMessage('Removed "${meal.title}" from favorites');
-  //     } else {
-  //       _favorites.add(meal);
-  //       _showInfoMessage('Added "${meal.title}" to favorites.');
-  //     }
-  //   });
-  // }
 
   void _setScreen(String identifier) async {
     Navigator.of(context).pop();
@@ -101,7 +82,6 @@ class _TabsScreenState extends ConsumerState<TabsScreen> {
       activePage = MealsScreen(
         "Favorites",
         favoriteMeals,
-        _toggleFavorite,
       );
       activePageTitle = "Favorites";
     }
