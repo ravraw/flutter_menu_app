@@ -23,7 +23,7 @@ class TabsScreen extends StatefulWidget {
 class _TabsScreenState extends State<TabsScreen> {
   int _selectedPageIndex = 0;
   List<Meal> favorites = [];
-  Map<Filter, bool> filters = kInitialFilters;
+  Map<Filter, bool> _currentFilters = kInitialFilters;
 
   void _selectpage(int index) {
     setState(() {
@@ -54,11 +54,11 @@ class _TabsScreenState extends State<TabsScreen> {
     if (identifier == "Filters") {
       final result =
           await Navigator.of(context).push<Map<Filter, bool>>(MaterialPageRoute(
-        builder: (ctx) => const FiltersScreen(),
+        builder: (ctx) => FiltersScreen(currentFilters: _currentFilters),
       ));
 
       setState(() {
-        filters = result ?? kInitialFilters;
+        _currentFilters = result ?? kInitialFilters;
       });
     } else if (identifier == "Favorites") {
       // Navigator.of(context).pop();
@@ -73,16 +73,16 @@ class _TabsScreenState extends State<TabsScreen> {
   @override
   Widget build(BuildContext context) {
     List<Meal> filteredMeals = dummyMeals.where((meal) {
-      if (filters[Filter.glutenFree]! && !meal.isGlutenFree) {
+      if (_currentFilters[Filter.glutenFree]! && !meal.isGlutenFree) {
         return false;
       }
-      if (filters[Filter.lactoseFree]! && !meal.isLactoseFree) {
+      if (_currentFilters[Filter.lactoseFree]! && !meal.isLactoseFree) {
         return false;
       }
-      if (filters[Filter.vegetarian]! && !meal.isVegetarian) {
+      if (_currentFilters[Filter.vegetarian]! && !meal.isVegetarian) {
         return false;
       }
-      if (filters[Filter.vegan]! && !meal.isVegan) {
+      if (_currentFilters[Filter.vegan]! && !meal.isVegan) {
         return false;
       }
       return true;
